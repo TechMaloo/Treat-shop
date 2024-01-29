@@ -1,0 +1,32 @@
+{% extends "partials/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Signup{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 p-3">
+            <div class="content-section">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <h3 class="text-center mt-3">Join</h3>
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-success" type="submit">Sign Up</button>
+                    </div>
+                </form>
+                <div class="border-top pt-3 mt-3">
+                    <small class="text-muted">
+                        Already Have an Account? <a class="ml-2" href="{% url 'userauths:login' %}">Sign in</a>
+                    </small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

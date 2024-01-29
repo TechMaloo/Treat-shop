@@ -1,0 +1,80 @@
+{% extends "partials/base.html" %}
+
+{% block title %}Detail{% endblock title %}
+
+{% block content %}
+<!--<style>-->
+<!--    .product-card img {-->
+<!--      object-fit: cover; /* You can use 'cover' for cropping or 'contain' for fitting without cropping */-->
+<!--      width: 100%; /* Set the width to 100% to ensure it takes the full width of its container */-->
+<!--      height: 100%; /* Set the height to 100% to ensure it takes the full height of its container */-->
+<!--    }-->
+<!--</style>-->
+<br>
+<h1 class="text-center">Product Details</h1>
+<br>
+<!--Image display for detail-->
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center">
+            <div class="image-card text-center">
+                <img style="border-radius: 20px; width: 400px;" src="{{ product.image.url }}" alt="Product Image"></div>
+
+        </div>
+    </div>
+
+<br>
+<!--Product detail with buy-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+            <div class="product-container" style="border-radius: 20px">
+                <div class="details-card text-center mt-2"
+                     style="display: block">
+                    <h4>{{ product.name }}</h4>
+                    <p>{{ product.description }}</p><br>
+                    <p><strong>Price:</strong> ${{ product.price }}</p><br>
+                    {% if request.user == product.created_by %}
+                    <a href="#" class="btn btn-outline-warning">Edit</a>
+                    <a href="#" class="btn btn-warning">Delete</a>
+                    {% else %}
+                    <a href="#" class="btn btn-outline-info">Contact</a>
+                    <a href="#" class="btn btn-info">Purchase</a>
+                    {% endif %}<br>
+                    <p class="mt-5 text-muted">{{ product.category.name }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<hr><br>
+<h2 class="text-center">{{ related_items_count }} Related Products</h2>
+<br>
+
+<div class="row row-cols-1 row-cols-sm-4 row-cols-md-4 row-cols-lg-4 g-3 mb-5 text-center">
+    {% for product in related_items %}
+    <div class="col">
+        <div class="card shadow-sm d-flex text-center" style="width: 18rem">
+
+            <div class="card-body">
+                <div class="card-img">
+                    <img src="{{ product.image.url }}" alt="" style="width: 235px;">
+                </div>
+                <br>
+                <p class="card-text">{{ product.description }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a href="{% url 'products:detail' product.id %}" class="btn btn-sm btn-outline-secondary">view</a>
+                        <a href="#" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    </div>
+                    <small class="text-body-secondary">{{ product.created_by }}.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

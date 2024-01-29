@@ -1,0 +1,86 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+<div class="px-4 pt-2 text-center border-bottom">
+    <h1 class="display-4 m-2 my-5 fw-bold text-body-emphasis">Unleash sweet ecstacy</h1>
+    <div class="col-lg-8 mx-auto">
+        <p class="lead mb-4">A culinary journey awaits at the Heart of Tempting Treat Haven!<br>
+            Indulge your senses: Elevate every moment with irresistible Treats with inviting and salivating flavors.
+        </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+            <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Explore</button>
+            <!--                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>-->
+        </div>
+    </div>
+    <div class="overflow-hidden" style="max-height: 50vh;">
+        <div class="container px-5">
+            <img src="{% static 'product_media/hero.jpg' %}" class="img-fluid border rounded-3 shadow-lg mb-4"
+                 alt="Example image"
+                 width="700" loading="lazy">
+        </div>
+    </div>
+</div>
+<!--category-->
+<div class="container">
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 fw-normal text-body-emphasis">Categories</h1>
+        <p class="fs-5 text-body-secondary" style="font-family: 'Averia Serif Libre', serif;">Here is an overview of our
+            delish products by categories from stock.</p>
+    </div>
+    <br>
+    <!--Animated icons-->
+    <div class="container d-flex" style="justify-content: space-evenly">
+        <div class="row">
+            <div class="col mx-4">
+                <video width="250" height="250" preload="none"
+                       style="background: transparent  url('https://cdn-icons-png.flaticon.com/512/13121/13121470.png') 50% 50% / fit no-repeat;"
+                       autoplay="autoplay" loop="true" muted="muted" playsinline="">
+                    <source src="https://cdn-icons-mp4.flaticon.com/512/13121/13121470.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="col mx-4">
+                <video width="250" height="250" preload="none"
+                       style="background: transparent  url('https://cdn-icons-png.flaticon.com/512/13373/13373274.png') 50% 50% / fit no-repeat;"
+                       autoplay="autoplay" loop="true" muted="muted" playsinline="">
+                    <source src="https://cdn-icons-mp4.flaticon.com/512/13373/13373274.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="col mx-4">
+                <video width="256" height="256" preload="none"
+                       style="background: transparent  url('https://cdn-icons-png.flaticon.com/512/13319/13319262.png') 50% 50% / fit no-repeat;"
+                       autoplay="autoplay" loop="true" muted="muted" playsinline="">
+                    <source src="https://cdn-icons-mp4.flaticon.com/512/13319/13319262.mp4" type="video/mp4">
+                </video>
+            </div>
+
+        </div>
+    </div>
+    <!--Animated icons-->
+</div>
+
+<div class="row">
+    {% for cat in category %}
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+            <div class="card-header py-3 text-bg-primary border-primary">
+                <h4 style="font-family: 'Averia Serif Libre', serif;" class="my-0 fw-normal">{{ cat.name }}</h4>
+            </div>
+            <div class="card-body text-center">
+                <h4 style="font-family: 'Averia Serif Libre', serif;" class="card-title pricing-card-title">From
+                    <br><span style="font-size: 60px;">{{ cat.price }}</span> Ngn</h4>
+                <div class="row-md-2.33">
+                    <p style="font-family: 'Averia Serif Libre', serif;">{{ cat.description }}</p>
+                </div>
+                <a href="#" class="w-100 btn btn-lg btn-primary" style="font-family: 'Averia Serif Libre', serif;">See
+                    more</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<!--category-->
+{% endblock %}
