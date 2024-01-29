@@ -14,7 +14,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["treat-shop.up.railway.app"]
 
 LOGIN_URL = "userauths:login"
 LOGIN_REDIRECT_URL = "/"
