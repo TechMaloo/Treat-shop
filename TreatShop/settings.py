@@ -19,6 +19,7 @@ DEBUG = True
 # "treat-shop.up.railway.app"
 # https://treat-shop.up.railway.app
 
+
 ALLOWED_HOSTS = ["treat-shop.up.railway.app"]
 CSRF_TRUSTED_ORIGINS = ["https://treat-shop.up.railway.app"]
 
