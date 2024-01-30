@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300&family=Pacifico&display=swap"
           rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=UnifrakturCook:wght@700&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
@@ -31,6 +33,9 @@
         h1 {
             font-family: 'Averia Serif Libre', serif;
 
+        h5 {
+            font-family: 'Averia Serif Libre', serif;
+
         }
         .hero p {
             font-family: 'Averia Serif Libre', serif;
@@ -44,13 +49,14 @@
         <ul class="nav me-auto">
             <li class="nav-item"><a href="{% url 'products:explore' %}"
                                     class="nav-link link-body-emphasis px-2">Explore</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Shops</a></li>
-            <li class="nav-item"><a href="{% url 'products:feed' %}" class="nav-link link-body-emphasis px-2">Feed</a>
+            <li class="nav-item"><a href="{% url 'products:shops' %}" class="nav-link link-body-emphasis px-2">Shops</a></li>
+<!--            <li class="nav-item"><a href="{% url 'products:feed' %}" class="nav-link link-body-emphasis px-2">Feed</a>-->
             </li>
             <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">About</a></li>
 
 
         </ul>
+        {% if user.is_authenticated %}
         <ul class="nav">
             <li class="div mt-1 mr-5">
                 <lord-icon
@@ -58,9 +64,14 @@
                         trigger="hover"
                         style="width:30px;height:30px">
                 </lord-icon>
+                <li class="nav-item mx-2 mt-2 mr-2">{{ user.username }}</li>
             </li>
-            <li class="nav-item mx-2"><a href="{% url 'userauths:login' %}" class=" btn  btn-outline-primary px-2">Login</a></li>
-            <li class="nav-item mx-2"><a href="{% url 'userauths:signup' %}" class=" btn  btn-primary px-2">Sign up</a></li>
+            <a href="{% url 'userauths:logout' %}" class="btn btn-danger">Sign out</a>
+            {% else %}
+            <a href="{% url 'userauths:login' %}" class="btn btn-outline-primary">Login</a>
+            <a href="{% url 'userauths:signup' %}" class="btn btn-primary">Sign Up</a>
+            </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
@@ -75,6 +86,13 @@
         </form>
     </div>
 </header>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}}">
+    <strong>{{message}}</strong>
+</div>
+{% endfor %}
+{% endif %}
 <!--Navbar-->
 <div class="container">
     {% block content %}{% endblock %}
@@ -91,9 +109,8 @@
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Products</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+                <li class="nav-item"><a href="{% url 'products:explore' %}" class="nav-link px-2 text-body-secondary">Explore</a></li>
+                <li class="nav-item"><a href="{% url 'products:shops' %}" class="nav-link px-2 text-body-secondary">Shops</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
             </ul>
             <p class="fs-4 text-center" style="font-family: 'Pacifico', cursive;">The Treat Shop© </p>

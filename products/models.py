@@ -25,7 +25,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to="product_pics")
     created_by = models.ForeignKey(User, related_name="products", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    is_sold = models.BooleanField(default="False")
+    is_sold = models.BooleanField(default=False)
     stock = models.IntegerField()
 
     def __str__(self):

@@ -1,0 +1,56 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block title %}Detail{% endblock title %}
+
+{% block content %}
+<style>
+    body {
+        font-family: 'Averia Serif Libre', serif;
+    }
+
+</style>
+<h1 class="text-center">More By Dreamzz.co</h1>
+
+<br><br>
+<!--Dreamzzz.co-->
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{% static 'product_media/Merch 01.jpg' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700"
+                 height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"
+                style="font-size: 60px; font-family: 'UnifrakturCook', cursive; color: #ffbf00;">The Drip Club</h1>
+            <p class="lead">Join our fashion-forward community and experience the convenience of shopping online with
+                user-friendly
+                navigation,<br>
+                secure transactions, and prompt delivery.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="#" class="btn btn-primary btn-lg px-4 me-md-2">Visit shop <i class="bi bi-arrow-right-short"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Treat Shop-->
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"
+                style="font-size: 60px; font-family: 'Pacifico', cursive; color: #ffbf00;">The Treat Shop</h1>
+            <p class="lead">A culinary journey awaits at the Heart of Tempting Treat Haven!<br>
+            Indulge your senses: Elevate every moment with irresistible Treats with inviting and salivating flavors.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="#" class="btn btn-primary btn-lg px-4 me-md-2">Visit shop <i class="bi bi-arrow-left-short"></i></a>
+            </div>
+        </div>
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{% static 'product_media/treats.jpg' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700"
+                 height="500" loading="lazy">
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -36,34 +36,53 @@ def feed(request):
     })
 
 
-def products_by_category(request, category_pk):
-    category = Category.objects.get(id=category_pk)  # id, Name, product
+def products_by_category(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+    # category = Category.objects.get(id=category_pk)
     products = Product.objects.filter(category=category)
     product_count = products.count()
 
-    return render(request, "products/product_category.html", {
+    return render(request, "products/explore.html", {
         "category": category,
         "products": products,
         "product_count": product_count,
     })
 
 
-def new(request):
-    form = NewItemForm()
+# def new(request):
+#     form = NewItemForm()
+#
+#     if request.method == "POST":
+#         form = NewItemForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             product = form.save(commit=False)
+#             product.created_by = request.user
+#             product.save()
+#             messages.success(request, "Product has been posted")
+#
+#             return redirect("products:explore")
+#
+#     return render(request, "products/form.html", {
+#         "form": form,
+#         "title": "Add item"
+#     })
 
+def new(request):
     if request.method == "POST":
-        form = NewItemForm(request.POST, request.FILES)
+        form = NewItemForm(request.POST)
         if form.is_valid():
             product = form.save(commit=False)
             product.created_by = request.user
             product.save()
-            messages.success(request, "Product has been posted")
+            messages.success(request, "Your product has been successfully added")
 
             return redirect("products:explore")
+    else:
+        form = NewItemForm()
 
     return render(request, "products/form.html", {
         "form": form,
-        "title": "Add item"
+        "title": "Add item",
     })
 
 
@@ -75,6 +94,7 @@ def edit_item(request, pk):
         form = EditItemForm(request.POST, request.FILES, instance=item)
         if form.is_valid():
             form.save()
+            messages.success(request, "Product updated")
             return redirect("products:detail", pk=pk)
 
     return render(request, "products/form.html", {
@@ -84,16 +104,30 @@ def edit_item(request, pk):
 
 
 @login_required
+# def delete(request, pk):
+#     product = get_object_or_404(Product, pk=pk, created_by=request.user)
+#     if request.method == "POST":
+#         product.delete()
+#         messages.info(request, f"{product.title} has been deleted.")
+#         return redirect("shop:index")
+#
+#     return render(request, "products/delete.html", {
+#         "product": product,
+#     })
 def delete(request, pk):
     product = get_object_or_404(Product, pk=pk, created_by=request.user)
     if request.method == "POST":
         product.delete()
-        messages.info(request, f"{product.title} has been deleted.")
-        return redirect("shop:index")
+        messages.info(request, f"{product.name} has been deleted.")
+        return redirect("products:index")
 
     return render(request, "products/delete.html", {
         "product": product,
     })
+
+
+def shops(request):
+    return render(request, "products/shops.html")
 
 
 def detail(request, pk):

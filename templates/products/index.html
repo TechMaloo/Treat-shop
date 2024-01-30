@@ -5,6 +5,13 @@
 
 
 {% block content %}
+<style>
+    body {
+        font-family: 'Averia Serif Libre', serif;
+    }
+</style>
+
+
 <div class="px-4 pt-2 text-center border-bottom">
     <h1 class="display-4 m-2 my-5 fw-bold text-body-emphasis">Unleash sweet ecstacy</h1>
     <div class="col-lg-8 mx-auto">
@@ -12,7 +19,7 @@
             Indulge your senses: Elevate every moment with irresistible Treats with inviting and salivating flavors.
         </p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-            <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Explore</button>
+            <a href="{% url 'products:explore' %}" class="btn btn-primary btn-lg px-4 me-sm-3">Explore</a>
             <!--                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>-->
         </div>
     </div>
@@ -75,7 +82,7 @@
                 <div class="row-md-2.33">
                     <p style="font-family: 'Averia Serif Libre', serif;">{{ cat.description }}</p>
                 </div>
-                <a href="#" class="w-100 btn btn-lg btn-primary" style="font-family: 'Averia Serif Libre', serif;">See
+                <a href="{% url 'products:products_by_category' cat.id %}" class="w-100 btn btn-lg btn-primary" style="font-family: 'Averia Serif Libre', serif;">See
                     more</a>
             </div>
         </div>
