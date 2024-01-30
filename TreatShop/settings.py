@@ -77,10 +77,16 @@ WSGI_APPLICATION = 'TreatShop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'DATABASE_URL': config("DATABASE_URL"),
+        'ENGINE': config("ENGINE"),
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': config("PASSWORD"),
+        'HOST': 'monorail.proxy.rlwy.net',
+        'PORT': config("PORT"),
     }
 }
+
 
 
 # Password validation
@@ -132,3 +138,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_ALLOWED_TEMPLATES_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
