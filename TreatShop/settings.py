@@ -19,8 +19,8 @@ DEBUG = True
 # "treat-shop.up.railway.app"
 # https://treat-shop.up.railway.app
 
-# ALLOWED_HOSTS = ["treat-shop.up.railway.app"]
-# CSRF_TRUSTED_ORIGINS = ["https://treat-shop.up.railway.app"]
+ALLOWED_HOSTS = ["treat-shop.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://treat-shop.up.railway.app"]
 
 LOGIN_URL = "userauths:login"
 LOGIN_REDIRECT_URL = "/"
@@ -152,5 +152,3 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 
-
-aws = "e no dey"
