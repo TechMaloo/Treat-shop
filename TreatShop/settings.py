@@ -17,8 +17,8 @@ DEBUG = True
 # "treat-shop.up.railway.app"
 # https://treat-shop.up.railway.app
 
-ALLOWED_HOSTS = ["*"]
-# CSRF_TRUSTED_ORIGINS = ["*"]
+ALLOWED_HOSTS = ["treat-shop.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://treat-shop.up.railway.app"]
 
 LOGIN_URL = "userauths:login"
 LOGIN_REDIRECT_URL = "/"
