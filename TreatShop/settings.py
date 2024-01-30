@@ -77,8 +77,8 @@ WSGI_APPLICATION = 'TreatShop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'DATABASE_URL': config("DATABASE_URL"),
-        'ENGINE': config("ENGINE"),
+        'DATABASE_URL': "postgresql://postgres:gG-ABDB3CDFbCf3DG1gbg6*Ceb4c512e@monorail.proxy.rlwy.net:27507/railway",
+        'ENGINE': "django.db.backends.postgresql",
         'NAME': 'railway',
         'USER': 'postgres',
         'PASSWORD': config("PASSWORD"),
