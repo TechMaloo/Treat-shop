@@ -1,4 +1,6 @@
 from pathlib import Path
+
+import dj_database_url
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -17,8 +19,8 @@ DEBUG = True
 # "treat-shop.up.railway.app"
 # https://treat-shop.up.railway.app
 
-ALLOWED_HOSTS = ["treat-shop.up.railway.app"]
-CSRF_TRUSTED_ORIGINS = ["https://treat-shop.up.railway.app"]
+# ALLOWED_HOSTS = ["treat-shop.up.railway.app"]
+# CSRF_TRUSTED_ORIGINS = ["https://treat-shop.up.railway.app"]
 
 LOGIN_URL = "userauths:login"
 LOGIN_REDIRECT_URL = "/"
@@ -83,9 +85,12 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': config("PASSWORD"),
         'HOST': 'monorail.proxy.rlwy.net',
-        'PORT': 27507,
+        'PORT': config("PORT"),
     }
 }
+
+DATABASE_URL = config("DATABASE_URL", default="")
+DATABASES["default"] = dj_database_url.config(default=DATABASE_URL, conn_max_age=600)
 
 
 
@@ -146,3 +151,6 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+
+
+aws = "e no dey"
