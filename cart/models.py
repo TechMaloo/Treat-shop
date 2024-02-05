@@ -10,6 +10,8 @@ class CartItem(models.Model):
     def get_total_price(self):
         return self.product.price * self.quantity
 
+    def __str__(self):
+        return self.product
 
 class Cart(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -17,3 +19,6 @@ class Cart(models.Model):
 
     def get_total_price(self):
         return sum(item.get_total_price() for item in self.items.all())
+
+    def __str__(self):
+        return self.items.count()
