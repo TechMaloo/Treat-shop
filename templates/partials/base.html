@@ -52,9 +52,7 @@
                                     class="nav-link link-body-emphasis px-2">Explore</a></li>
             <li class="nav-item"><a href="{% url 'products:shops' %}" class="nav-link link-body-emphasis px-2">Shops</a>
             </li>
-            <li class="nav-item"><a href="{% url 'products:shops' %}" class="nav-link link-body-emphasis px-2">Shops</a>
-            </li>
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">About</a></li>
+            <li class="nav-item-disabled"><a href="#" class="nav-link link-body-emphasis px-2">About</a></li>
         </ul>
         {% if user.is_authenticated %}
         <ul class="nav">
@@ -65,13 +63,11 @@
                         style="width:30px;height:30px">
                 </lord-icon>
             <li class="nav-item mx-2 mt-2 mr-2">{{ user.username }}</li>
-            <li class="nav-item mx-2 mt-2 mr-2">{{ user.username }}</li>
-            </li>
-            <a href="{% url 'userauths:logout' %}" class="btn btn-danger">Sign out</a>
+            <li><a href="{% url 'userauths:logout' %}" class="btn btn-danger">Sign out</a></li>
             {% else %}
-            <a href="{% url 'userauths:login' %}" class="btn btn-outline-primary">Login</a>
-            <a href="{% url 'userauths:signup' %}" class="btn btn-primary">Sign Up</a>
-            </li>
+            <li><a href="{% url 'userauths:login' %}" class="btn btn-outline-primary">Login</a></li>
+            <li><a href="{% url 'userauths:signup' %}" class="btn btn-primary">Sign Up</a></li>
+
             {% endif %}
         </ul>
     </div>
@@ -83,7 +79,7 @@
             <span style="font-family: 'Pacifico', cursive;" class="fs-4"><strong>The Treat Shop</strong></span>
         </a>
 
-        <form action="{% url 'search:find' %}" method="get" class="d-flex" role="search">
+        <form action="#" method="get" class="d-flex" role="search">
             <input name="query" value="{{ query }}" class="form-control me-2" type="search"
                    placeholder="Search..." aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
@@ -114,10 +110,6 @@
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item"><a href="{% url 'products:explore' %}" class="nav-link px-2 text-body-secondary">Explore</a>
-                </li>
-                <li class="nav-item"><a href="{% url 'products:shops' %}" class="nav-link px-2 text-body-secondary">Shops</a>
-                </li>
                 <li class="nav-item"><a href="{% url 'products:explore' %}" class="nav-link px-2 text-body-secondary">Explore</a>
                 </li>
                 <li class="nav-item"><a href="{% url 'products:shops' %}" class="nav-link px-2 text-body-secondary">Shops</a>
