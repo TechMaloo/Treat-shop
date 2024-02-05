@@ -3,10 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Category, Product, TextFeed, PhotoFeed
 from django.contrib import messages
 from .forms import NewItemForm, EditItemForm
-<<<<<<< HEAD
 from cart.models import CartItem, Cart
-=======
->>>>>>> origin/master
 
 
 # Create your views here.
@@ -53,8 +50,6 @@ def products_by_category(request, pk):
     })
 
 
-<<<<<<< HEAD
-=======
 # def new(request):
 #     form = NewItemForm()
 #
@@ -72,7 +67,6 @@ def products_by_category(request, pk):
 #         "form": form,
 #         "title": "Add item"
 #     })
->>>>>>> origin/master
 
 def new(request):
     if request.method == "POST":
@@ -111,19 +105,6 @@ def edit_item(request, pk):
 
 
 @login_required
-<<<<<<< HEAD
-=======
-# def delete(request, pk):
-#     product = get_object_or_404(Product, pk=pk, created_by=request.user)
-#     if request.method == "POST":
-#         product.delete()
-#         messages.info(request, f"{product.title} has been deleted.")
-#         return redirect("shop:index")
-#
-#     return render(request, "products/delete.html", {
-#         "product": product,
-#     })
->>>>>>> origin/master
 def delete(request, pk):
     product = get_object_or_404(Product, pk=pk, created_by=request.user)
     if request.method == "POST":
