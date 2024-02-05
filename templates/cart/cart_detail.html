@@ -1,0 +1,73 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block title %}Cart{% endblock %}
+{% block content %}
+<style>
+    .small {
+        font-size: 25px;
+        color: black;
+    }
+
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 p-3">
+            <div class="content-section">
+                {% if cart_items_count == 0 %}
+                <h4 class="text-center">Cart seems to be empty</h4>
+                <div class="text-center mt-5">
+                    <img width="300rem" src="{% static 'shop_media/CartEmpty.png' %}" alt="Empty cart.jpg">
+                </div>
+
+
+                {% else %}
+                <h4 class="text-center">Shopping Cart / {{ cart_items_count }} <span class="small">items added</span>
+                </h4>
+                <div class="container d-flex" style="justify-content: flex-end">
+                    <a href="#" class="btn btn-outline-danger my-2">Clear cart</a>
+                </div>
+                <div class="container">
+                    <h2>Your Cart</h2>
+                    <table class="table table-hover table-striped rounded-3">
+                        <thead class="">
+                        <tr class="">
+                            <th scope="col">Product</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in cart_item.item %}
+                        <tr>
+                            <td>{{ item.product.name }}</td>
+                            <td>{{ item.product.price }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.total_price }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="3">Total:</td>
+                            <td>{{ total_price }}</td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                    <!--                <a href="">Delete Cart</a>-->
+                    <div class="container d-flex mt-5" style="justify-content: flex-end">
+                        <a href="{% url 'cart:checkout' %}" class="btn btn-lg btn-primary my-2">Checkout</a>
+                    </div>
+                </div>
+                {% endif %}
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
