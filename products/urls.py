@@ -12,11 +12,6 @@ urlpatterns = [
     path("feed/", views.feed, name="feed"),
     path("detail/<int:pk>/", views.detail, name="detail"),
     path("new/", views.new, name="new"),
-<<<<<<< HEAD
-=======
-    # path("delete/<>/", views.delete, name="delete"),
-    # path("delete/<int:pk>/", views.delete, name="delete"),
->>>>>>> origin/master
     path("delete/<int:pk>/", views.delete, name="delete"),
     path("category/<int:category_pk>/", views.products_by_category, name="product_category"),
     path("product-category/<int:pk>/", views.products_by_category, name="products_by_category"),
