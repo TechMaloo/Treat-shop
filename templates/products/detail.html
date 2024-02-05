@@ -1,6 +1,10 @@
 {% extends "partials/base.html" %}
+<<<<<<< HEAD
 {% load static %}
 {% load crispy_forms_tags %}
+=======
+
+>>>>>>> origin/master
 {% block title %}Detail{% endblock title %}
 
 {% block content %}
@@ -8,9 +12,12 @@
     body {
         font-family: 'Averia Serif Libre', serif;
     }
+<<<<<<< HEAD
     .image-card {
         object-fit: cover;
     }
+=======
+>>>>>>> origin/master
 
 </style>
 <br>
@@ -20,12 +27,18 @@
 
 <div class="row">
     <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center">
+<<<<<<< HEAD
         <div class="image-card col-lg-6 text-center rounded-3">
             <img src="{{ product.image.url }}" class="img-fluid rounded-3" alt="Product Image">
         </div>
         <!--        <div class="image-card text-center">-->
         <!--            <img style="border-radius: 20px; width: 400px;" src="{{ product.image.url }}" alt="Product Image">-->
         <!--        </div>-->
+=======
+        <div class="image-card text-center">
+            <img style="border-radius: 20px; width: 400px;" src="{{ product.image.url }}" alt="Product Image"></div>
+
+>>>>>>> origin/master
     </div>
 </div>
 
@@ -40,6 +53,7 @@
                     <h4>{{ product.name }}</h4>
                     <p>{{ product.description }}</p><br>
                     <p><strong>Price:</strong> ${{ product.price }}</p><br>
+<<<<<<< HEAD
                     <div class="btn-group">
                         <form method="post" action="{% url 'cart:add_to_cart' product.id %}">
                             {% csrf_token %}
@@ -51,6 +65,15 @@
                     </div>
 
                     <br>
+=======
+                    {% if request.user == product.created_by %}
+                    <a href="#" class="btn btn-outline-warning">Edit</a>
+                    <a href="#" class="btn btn-warning">Delete</a>
+                    {% else %}
+                    <a href="#" class="btn btn-outline-info">Contact</a>
+                    <a href="#" class="btn btn-info">Purchase</a>
+                    {% endif %}<br>
+>>>>>>> origin/master
                     <p class="mt-5 text-muted">{{ product.category.name }}</p>
                 </div>
             </div>
@@ -64,6 +87,7 @@
 <h2 class="text-center">{{ related_items_count }} Related Products</h2>
 <br>
 
+<<<<<<< HEAD
 <!--<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 d-flex">-->
 <div class="row d-flex row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-3"
      style="justify-content: space-between;">
@@ -82,10 +106,33 @@
                         <a href="#" class="btn btn-secondary">Cart</a>
                     </div>
                     <small class="text-body-secondary">{{ product.rating }}</small>
+=======
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 d-flex">
+    {% for product in related_items %}
+    <div class="col">
+        <div class="card shadow-sm d-flex" style="width: 18rem; justify-content: space-between;">
+
+            <div class="card-body">
+                <div class="card-img text-center">
+                    <img src="{{ product.image.url }}" alt="" style="width: 235px;">
+                </div>
+                <br>
+                <small class="text-muted">{{ product.category }}</small>
+                <h5 style="font-size: 18px">{{ product.name }}</h5>
+                <!--                <p class="card-text">{{ product.description }}{% if product.description|wordcount > 15 %}{{ product.description|truncatewords:15 }}{% else %} {{ product.description }}{% endif %}</p>-->
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a href="{% url 'products:detail' product.id %}"
+                           class="btn btn-sm btn-outline-secondary">view</a>
+                        <a href="#" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    </div>
+                    <a href="{% url 'products:delete' product.id %}"><i class="fa-solid fa-trash m-2" style="color: #ff0000;"></i></a>
+>>>>>>> origin/master
                 </div>
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     {% else %}
     <h1>Nothin here</h1><br><br><br>
     <div class="text-center mt-5">
@@ -122,5 +169,10 @@
 <!--    {% endfor %}-->
 <!--</div>-->
 
+=======
+    {% endfor %}
+</div>
+
+>>>>>>> origin/master
 
 {% endblock content %}

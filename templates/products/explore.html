@@ -1,5 +1,8 @@
 {% extends "partials/base.html" %}
+<<<<<<< HEAD
 {% load static %}
+=======
+>>>>>>> origin/master
 {% block title %}Explore{% endblock title %}
 
 {% block content %}
@@ -7,16 +10,21 @@
     body {
         font-family: 'Averia Serif Libre', serif;
     }
+<<<<<<< HEAD
     .img {
         object-fit: cover;
     }
     card-img-top {
         object-fit: cover
     }
+=======
+
+>>>>>>> origin/master
 </style>
 <h1 class="text-center">{{ products_count }} Available Products</h1>
 <br><br>
 
+<<<<<<< HEAD
 
 <div class="div d-flex text-right mr-5 mb-4" style="justify-content: right">
     <a class="btn btn-primary position-relative" href="{% url 'cart:cart_detail' %}">
@@ -49,10 +57,42 @@
                         <a href="{% url 'cart:add_to_cart' product.id %}" class="btn btn-secondary">Cart</a>
                     </div>
                     <small class="text-body-secondary">{{ product.rating }}</small>
+=======
+<div class="div">
+    <!--    <a class="btn btn-primary" href="#">Add Product</a>-->
+</div>
+
+<div class=" d-flex row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-md-3 g-3 d-flex" style="justify-content: space-evenly">
+    {% for product in products %}
+    <div class="col">
+        <div class="card shadow-sm d-flex" style="width: 18rem; justify-content: space-evenly; margin: 0 2rem;">
+
+            <div class="card-body">
+                <div class="card-img text-center">
+                    <img src="{{ product.image.url }}" alt="" style="width: 235px;">
+                </div>
+                <br>
+                <small class="text-muted">{{ product.category }}</small>
+                <h5 style="font-size: 18px">{{ product.name }}</h5>
+                <!--                <p class="card-text">{{ product.description }}{% if product.description|wordcount > 15 %}{{ product.description|truncatewords:15 }}{% else %} {{ product.description }}{% endif %}</p>-->
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a href="{% url 'products:detail' product.id %}"
+                           class="btn btn-sm btn-outline-secondary">view</a>
+                        {% if request.user == product.created_by %}
+                        <a href="{% url 'products:edit' product.id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                        {% else %}
+                        <a href="#" class="btn btn-sm btn-secondary">Purchase</a>
+                        {% endif %}
+                    </div>
+                    <a href="{% url 'products:delete' product.id %}"><i class="fa-solid fa-trash m-2"
+                                                                        style="color: #ff0000;"></i></a>
+>>>>>>> origin/master
                 </div>
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     {% else %}
     <h1>Nothin here</h1><br><br><br>
     <div class="text-center mt-5">
@@ -94,4 +134,9 @@
 <!--    {% endfor %}-->
 <!--</div>-->
 
+=======
+    {% endfor %}
+</div>
+
+>>>>>>> origin/master
 {% endblock content %}

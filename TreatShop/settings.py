@@ -20,8 +20,13 @@ DEBUG = True
 # https://treat-shop.up.railway.app
 
 
+<<<<<<< HEAD
 # ALLOWED_HOSTS = ["treat-shop.up.railway.app"]
 # CSRF_TRUSTED_ORIGINS = ["https://treat-shop.up.railway.app"]
+=======
+ALLOWED_HOSTS = ["treat-shop.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://treat-shop.up.railway.app"]
+>>>>>>> origin/master
 
 LOGIN_URL = "userauths:login"
 LOGIN_REDIRECT_URL = "/"
@@ -40,10 +45,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'products',
     'userauths',
+<<<<<<< HEAD
     'search',
     'crispy_forms',
     'crispy_bootstrap5',
     'cart',
+=======
+    'crispy_forms',
+    'crispy_bootstrap5',
+>>>>>>> origin/master
 ]
 
 MIDDLEWARE = [
